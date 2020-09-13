@@ -1,0 +1,13 @@
+__pycache__
+*.pyc
+.env
+.venv
+venv
+.vscode
+.idea
+.ipynb_checkpoints
+t-*.ipynb
+debug.log
+geckodriver.log
+requirements.in
+*.pdf
