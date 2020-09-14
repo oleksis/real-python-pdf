@@ -10,7 +10,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
-from build_pdf import options, wait_for, delete_element, print_pdf_save_as, ROOT, SITE
+from build_pdf import options, wait_for, delete_element, print_pdf, ROOT, SITE
 
 
 class BuildPdfTest(unittest.TestCase):
@@ -35,17 +35,21 @@ class BuildPdfTest(unittest.TestCase):
         cls.nav_element = None
         try:
             cls.nav_element = cls.driver.find_element(By.CSS_SELECTOR, "nav.navbar")
-        except NoSuchElementException as err:
+            pdf_file_name = cls.driver.title + ".pdf"
+            cls.pdf_file_path = os.sep.join([ROOT, "pdfs", pdf_file_name])
+
+            if os.path.isfile(cls.pdf_file_path):
+                os.remove(cls.pdf_file_path)
+        except (NoSuchElementException, PermissionError) as err:
             print(err)
-        pdf_file_name = cls.driver.title + ".pdf"
-        cls.pdf_file_path = os.sep.join([ROOT, "pdfs", pdf_file_name])
-        if os.path.isfile(cls.pdf_file_path):
-            os.remove(cls.pdf_file_path)
 
     def test_delete_element(self, name="nav.navbar", by=By.CSS_SELECTOR):
         self.assertTrue(delete_element(self.driver, name, by))
+    
+    def test_delete_element_noexist(self):
+        self.assertFalse(delete_element(self.driver, "no-exist-element", By.CSS_SELECTOR))
 
-    def test_print_pdf_save_as(self):
+    def delete_elements(self):
         print("Deleting elements...")
         self.test_delete_element("aside", by=By.TAG_NAME)
         self.test_delete_element("div.drip-tab-container")
@@ -56,8 +60,11 @@ class BuildPdfTest(unittest.TestCase):
         )
         self.test_delete_element("footer", by=By.TAG_NAME)
         self.test_delete_element("button.btn.w-100")
+    
+    def test_print_pdf(self):
+        self.delete_elements()
         print("Printing to PDF...")
-        print_pdf_save_as(self.driver, path_pdf=self.pdf_file_path)
+        print_pdf(self.driver, path_pdf=self.pdf_file_path)
         is_pdf_file = os.path.isfile(self.pdf_file_path)
         self.assertTrue(is_pdf_file, "PDF file not printed!")
 

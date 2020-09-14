@@ -1,3 +1,4 @@
+import base64
 import hashlib
 import os
 import subprocess
@@ -31,7 +32,8 @@ chrome_exe = (
 )
 
 options = webdriver.ChromeOptions()
-# options.add_argument('--headless')
+# Capabilities ChromeDriver
+options.add_argument('--headless')
 options.add_argument("--enable-dom-distiller")
 options.add_argument("--disable-gpu")
 options.add_experimental_option(
@@ -108,10 +110,8 @@ def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file
     Use handle_save_as for handle the Save as dialog window.
     Using when webdriver options is NOT headless.
     NOTE: Adjust the time.sleep according to your Environment
-          Window Locale: EN
+          Chrome Locales: EN
     """
-    url = driver.current_url
-
     try:
         driver.execute_async_script("window.print();")
     except SeleniumTimeoutException as err:
@@ -170,13 +170,21 @@ def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file
     driver.switch_to.window(driver.window_handles[0])
 
 
-def print_pdf(driver, browser="chrome", path_pdf="file.pdf"):
+def print_pdf(driver: webdriver.Chrome, path_pdf="file.pdf"):
     """
     Print and save the Web page HTML as PDF file
     using the Chrome Devtools Protocol.
     Using when webdriver options is headless.
     """
-    pass
+    # TODO: Custume with headerTemplate/footerTemplate
+    # https:chromedevtools.github.io/devtools-protocol/1-3/Page/#method-printToPDF
+    pdf_cdp = driver.execute_cdp_cmd(
+        "Page.printToPDF",
+        {"portrait": True}
+    )
+
+    with open(file=path_pdf, mode="wb") as _file:
+        _file.write(base64.b64decode(pdf_cdp['data']))
 
 
 def main(url):
@@ -212,10 +220,10 @@ def main(url):
     print("Printing to PDF...")
     pdf_file_name = driver.title + ".pdf"
     pdf_file_path = os.sep.join([ROOT, "pdfs", pdf_file_name])
-    print_pdf_save_as(driver, path_pdf=pdf_file_path)
+    # print_pdf_save_as(driver, path_pdf=pdf_file_path)
+    print_pdf(driver, path_pdf=pdf_file_path)
     print("All done!")
-
-    _ = input("Enter for continue...")
+    # _ = input("Enter for continue...")
     print("Bye 👋🏾")
     driver.quit()
 
