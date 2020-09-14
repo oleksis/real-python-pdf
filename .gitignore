@@ -11,3 +11,5 @@ debug.log
 geckodriver.log
 requirements.in
 *.pdf
+.coverage
+.coveragerc

@@ -108,6 +108,7 @@ def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file
     Use handle_save_as for handle the Save as dialog window.
     Using when webdriver options is NOT headless.
     NOTE: Adjust the time.sleep according to your Environment
+          Window Locale: EN
     """
     url = driver.current_url
 
@@ -139,7 +140,7 @@ def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file
         # 'Save as PDF/local/'
         _value = dropdown.get_attribute("value")
 
-        if _value and (_value[:4] != "Save" or _value[:7] != "Guardar"):
+        if _value and _value[:4] != "Save":
             dropdown.click()
             time.sleep(0.5)
             # Down until Save as PDF
