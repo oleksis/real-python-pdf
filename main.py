@@ -54,14 +54,19 @@ if __name__ == "__main__":
         url = link[1]
         try:
             pdf_name = main_build_pdf(url)
-            pdf_merger.append(os.sep.join([pdf_dir, pdf_name]))
+            pdf_merger.append(
+                os.sep.join([pdf_dir, pdf_name]),
+                bookmark=link[0],
+                import_bookmarks=False,
+            )
         except Exception as err:
             print("Error building PDF from: %s\n" % url)
             print(err + "\n")
             continue
         time.sleep(1)
 
-    with open(file=os.sep.join([ROOT, "Real Python.pdf"]), mode="wb") as output_file:
+    with open(file=os.sep.join([ROOT, "Real_Python.pdf"]), mode="wb") as output_file:
         pdf_merger.write(output_file)
 
+    pdf_merger.close()
     print("Done. 📖Enjoy Real Python.pdf🤓")
