@@ -1,4 +1,5 @@
-# Real Python PDF ![Tests](https://github.com/oleksis/real-python-pdf/workflows/Tests/badge.svg)
+# Real Python PDF
+![Tests](https://github.com/oleksis/real-python-pdf/workflows/Tests/badge.svg)
 
 # TOC
 Table of Content
@@ -70,4 +71,4 @@ Table of Content
 
 
 # LICENSE
-Unlicense
+[MIT](LICENSE)
