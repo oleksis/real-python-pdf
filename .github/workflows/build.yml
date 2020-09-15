@@ -1,6 +1,8 @@
 name: Build PDF
 
 on:
+  release:
+    types: [published]
   workflow_dispatch:
 
 
