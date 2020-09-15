@@ -45,9 +45,11 @@ class BuildPdfTest(unittest.TestCase):
 
     def test_delete_element(self, name="nav.navbar", by=By.CSS_SELECTOR):
         self.assertTrue(delete_element(self.driver, name, by))
-    
+
     def test_delete_element_noexist(self):
-        self.assertFalse(delete_element(self.driver, "no-exist-element", By.CSS_SELECTOR))
+        self.assertFalse(
+            delete_element(self.driver, "no-exist-element", By.CSS_SELECTOR)
+        )
 
     def delete_elements(self):
         print("Deleting elements...")
@@ -60,7 +62,7 @@ class BuildPdfTest(unittest.TestCase):
         )
         self.test_delete_element("footer", by=By.TAG_NAME)
         self.test_delete_element("button.btn.w-100")
-    
+
     def test_print_pdf(self):
         self.delete_elements()
         print("Printing to PDF...")

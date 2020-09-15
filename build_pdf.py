@@ -33,14 +33,15 @@ chrome_exe = (
 
 options = webdriver.ChromeOptions()
 # Capabilities ChromeDriver
-options.add_argument('--headless')
+options.add_argument("--headless")
 options.add_argument("--enable-dom-distiller")
 options.add_argument("--disable-gpu")
 options.add_experimental_option(
     "prefs",
     {"download": {"prompt_for_download": False, "default_directory": os.getcwd(),},},
 )
-options.binary_location = chrome_exe
+# Custom Google Chrome Location
+# options.binary_location = chrome_exe
 
 
 def reader_mode(url):
@@ -178,13 +179,10 @@ def print_pdf(driver: webdriver.Chrome, path_pdf="file.pdf"):
     """
     # TODO: Custume with headerTemplate/footerTemplate
     # https:chromedevtools.github.io/devtools-protocol/1-3/Page/#method-printToPDF
-    pdf_cdp = driver.execute_cdp_cmd(
-        "Page.printToPDF",
-        {"portrait": True}
-    )
+    pdf_cdp = driver.execute_cdp_cmd("Page.printToPDF", {"portrait": True})
 
     with open(file=path_pdf, mode="wb") as _file:
-        _file.write(base64.b64decode(pdf_cdp['data']))
+        _file.write(base64.b64decode(pdf_cdp["data"]))
 
 
 def main(url):
@@ -223,6 +221,8 @@ def main(url):
     delete_element(driver, "div.app_gdpr--2k2uB")
     print("Printing to PDF...")
     pdf_file_name = driver.title + ".pdf"
+    # Clean some special characters
+    pdf_file_name = pdf_file_name.replace("?", "").replace("*", "")
     pdf_file_path = os.sep.join([ROOT, "pdfs", pdf_file_name])
     # print_pdf_save_as(driver, path_pdf=pdf_file_path)
     print_pdf(driver, path_pdf=pdf_file_path)
@@ -237,5 +237,5 @@ if __name__ == "__main__":
     url = ""
     if len(sys.argv) == 2:
         url = sys.argv[1]
-    
+
     main(url)

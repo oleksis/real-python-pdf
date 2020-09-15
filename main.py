@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import time
 
 from PyPDF2 import PdfFileMerger
 
@@ -15,7 +16,9 @@ def get_chunk(marker, content):
     "Get chunk of content in Markdown"
     chunk = ""
     r = re.compile(
-        r"<!\-\- {} starts \-\->(?P<{}>.*)<!\-\- {} ends \-\->".format(marker, marker, marker),
+        r"<!\-\- {} starts \-\->(?P<{}>.*)<!\-\- {} ends \-\->".format(
+            marker, marker, marker
+        ),
         re.DOTALL,
     )
     m = r.search(content)
@@ -28,7 +31,9 @@ def get_links(content):
     "Get List Markdown links from content"
     name_regex = "[^]]+"
     url_regex = "https[s]?://[^\)]+"
-    link_regex = '\[(?P<text>{0})\]\(\s*(?P<url>{1})(?:(?P<title>"\s.+"))?\)'.format(name_regex, url_regex)
+    link_regex = '\[(?P<text>{0})\]\(\s*(?P<url>{1})(?:(?P<title>"\s.+"))?\)'.format(
+        name_regex, url_regex
+    )
     r = re.compile(link_regex)
     links = r.findall(content)
     return links
@@ -39,9 +44,9 @@ if __name__ == "__main__":
     pdf_merger = PdfFileMerger()
     pdf_dir = os.sep.join([ROOT, "pdfs"])
 
-    with open("test.md", "r") as _file:
+    with open("README.md", "r") as _file:
         content = _file.read()
-    
+
     toc_content = get_chunk("toc", content)
     links = get_links(toc_content)
 
@@ -54,11 +59,9 @@ if __name__ == "__main__":
             print("Error building PDF from: %s\n" % url)
             print(err + "\n")
             continue
-    
-    with open(
-        file=os.sep.join([ROOT, "Real Python.pdf"]), 
-        mode="wb"
-    ) as output_file:
+        time.sleep(1)
+
+    with open(file=os.sep.join([ROOT, "Real Python.pdf"]), mode="wb") as output_file:
         pdf_merger.write(output_file)
-    
+
     print("Done. 📖Enjoy Real Python.pdf🤓")
