@@ -23,13 +23,14 @@ _path = os.path.realpath(os.path.abspath(__file__))
 ROOT = os.path.dirname(_path)
 SITE = "Real Python"
 
+""" # Google Chrome Canary in Windows
 app_data = os.environ.get("APPDATA")
 assert app_data
 # Chrome Canary
 chrome_exe = (
     os.path.abspath(os.path.dirname(app_data))
     + "\\Local\\Google\\Chrome SxS\\Application\\chrome.exe"
-)
+) """
 
 options = webdriver.ChromeOptions()
 # Capabilities ChromeDriver
@@ -37,8 +38,7 @@ options.add_argument("--headless")
 options.add_argument("--enable-dom-distiller")
 options.add_argument("--disable-gpu")
 options.add_experimental_option(
-    "prefs",
-    {"download": {"prompt_for_download": False, "default_directory": os.getcwd(),},},
+    "prefs", {"download": {"prompt_for_download": False, "default_directory": ROOT,},},
 )
 # Custom Google Chrome Location
 # options.binary_location = chrome_exe
