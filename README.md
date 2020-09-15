@@ -1,4 +1,4 @@
-# Real Python PDF
+# Real Python PDF ![Tests](https://github.com/oleksis/real-python-pdf/workflows/Tests/badge.svg)
 
 # TOC
 Table of Content
