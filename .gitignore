@@ -10,6 +10,8 @@ t-*.ipynb
 debug.log
 geckodriver.log
 requirements.in
-*.pdf
+pdfs/*.pdf
+Real Python.pdf
 .coverage
 .coveragerc
+test.md

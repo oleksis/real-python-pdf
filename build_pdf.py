@@ -188,6 +188,10 @@ def print_pdf(driver: webdriver.Chrome, path_pdf="file.pdf"):
 
 
 def main(url):
+    "Get URL with Chrome webdriver and save PDF to pdfs folder"
+    # HTML Remote or Local
+    assert "http" in url[:4] or "file" in url[:4]
+
     driver = webdriver.Chrome(options=options)
     # driver.get(reader_mode(url))
     driver.get(url)
@@ -226,12 +230,12 @@ def main(url):
     # _ = input("Enter for continue...")
     print("Bye 👋🏾")
     driver.quit()
+    return pdf_file_name
 
 
 if __name__ == "__main__":
     url = ""
     if len(sys.argv) == 2:
         url = sys.argv[1]
-    # HTML Remote or Local
-    assert "http" in url[:4] or "file" in url[:4]
-    sys.exit(main(url))
+    
+    main(url)
