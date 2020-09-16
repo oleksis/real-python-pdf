@@ -1,6 +1,10 @@
 # Real Python PDF
 ![Tests](https://github.com/oleksis/real-python-pdf/workflows/Tests/badge.svg)
 
+> ⚠ The tutorial contents remain copyright © Real Python
+>
+> ⚠ This is "unofficial" Real Python project
+
 # Motivation
 Real Python is an excellent site to learn Python, it has a large number of articles, 
 from a basic to advanced level on different topics. During a certain time you can 
@@ -63,6 +67,8 @@ python main.py
 * [Sorting Algorithms Python](https://realpython.com/sorting-algorithms-python/)
 * [Binary Search Python](https://realpython.com/binary-search-python/)
 * [Python Defaultdict](https://realpython.com/python-defaultdict/)
+* [Python Sleep](https://realpython.com/python-sleep/)
+* [Python Import](https://realpython.com/python-import/)
 * [Python Debugging Pdb](https://realpython.com/python-debugging-pdb/)
 * [Python Testing](https://realpython.com/python-testing/)
 * [Pytest Python Testing](https://realpython.com/pytest-python-testing/)
@@ -70,6 +76,7 @@ python main.py
 * [Python Type Checking](https://realpython.com/python-type-checking/)
 * [Pyinstaller Python](https://realpython.com/pyinstaller-python/)
 * [Python Logging Source Code](https://realpython.com/python-logging-source-code/)
+* [Python Command Line Arguments](https://realpython.com/python-command-line-arguments/)
 * [Python GUI With WxPython](https://realpython.com/python-gui-with-wxpython/)
 * [Python PyQt GUI Calculator](https://realpython.com/python-pyqt-gui-calculator/)
 * [PySimpleGUI Python](https://realpython.com/pysimplegui-python/)

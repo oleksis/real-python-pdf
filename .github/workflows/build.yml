@@ -29,11 +29,8 @@ jobs:
     - name: Update Real Python PDF
       run: |-
         python main.py
-    - name: Commit and push if changed
-      run: |-
-        git diff
-        git config --global user.email "actions@users.noreply.github.com"
-        git config --global user.name "PDF-bot"
-        git add -A
-        git commit -m "Updated content" || exit 0
-        git push
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Real-Python-PDF
+        path: Real_Python.pdf
+        if-no-files-found: error

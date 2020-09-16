@@ -28,15 +28,15 @@ def get_chunk(marker, content):
 
 
 def get_links(content):
-    "Get List[Dict] Markdown links from content"
+    "Get list[dict] Markdown links from content"
     name_regex = "[^]]+"
-    url_regex = "https[s]?://[^\)]+"
-    link_regex = '\[(?P<text>{0})\]\(\s*(?P<url>{1})(?:(?P<title>"\s.+"))?\)'.format(
+    url_regex = 'https[s]?://.+[^\)"]'
+    link_regex = '\[(?P<text>{0})\]\(\s*(?P<url>{1})(?:(?P<title>\s*".+"))?\)'.format(
         name_regex, url_regex
     )
     r = re.compile(link_regex)
     links = [
-        {"text": link[0], "url": link[1], "title": link[2]}
+        {"text": link[0], "url": link[1].strip(" "), "title": link[2].strip('"')}
         for link in r.findall(content)
     ]
     return links
