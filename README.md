@@ -1,12 +1,35 @@
 # Real Python PDF
 ![Tests](https://github.com/oleksis/real-python-pdf/workflows/Tests/badge.svg)
 
-# TOC
-Table of Content
+# Motivation
+Real Python is an excellent site to learn Python, it has a large number of articles, 
+from a basic to advanced level on different topics. During a certain time you can 
+collect the list of articles of your interest and organize/structure them in a 
+__Table of Contents__ (TOC) and then create a PDF (Python CookBook 👨🏾‍🍳🧾📖🐍) and 
+access its Off-Line reading.
+
+# Requirements
+* [Selenium](https://selenium-python.readthedocs.io/installation.html)
+* [PyPDF2](https://pythonhosted.org/PyPDF2/)
+
+# Usage
+You can create a __Table of Contents__ (TOC) by following the Links syntax in 
+[Markdown](https://guides.github.com/features/mastering-markdown/)
+
+When run `main.py` it reads the __TOC__ block from this `README.md`, it creates the 
+list of links to download the __PDF__ version of each article and save it in the `pdfs` 
+folder. When finished, merge all the pdfs passing the __Outlines/Bookmarks__ and save 
+the final pdf as `Real_Python.pdf` in the root directory.
+
+```bash
+python main.py
+```
+
+# Table of Contents
 
 <!-- toc starts -->
 
-##	BASIC
+##	Basic
 
 * [Python Strings](https://realpython.com/python-strings/)
 * [Python String Split Concatenate Join](https://realpython.com/python-string-split-concatenate-join/)
@@ -27,7 +50,7 @@ Table of Content
 * [Python JSON](https://realpython.com/python-json/)
 * [Python Time Module](https://realpython.com/python-time-module/)
 
-##	INTERMEDIATE 
+##	Intermediate
 
 * [Python Interface](https://realpython.com/python-interface/)
 * [Inheritance Composition Python](https://realpython.com/inheritance-composition-python/)
@@ -48,7 +71,7 @@ Table of Content
 * [Pyinstaller Python](https://realpython.com/pyinstaller-python/)
 * [Python Logging Source Code](https://realpython.com/python-logging-source-code/)
 
-##	ADVANCED
+##	Advanced
 
 * [Python GIL](https://realpython.com/python-gil/)
 * [Python Concurrency](https://realpython.com/python-concurrency/)
@@ -69,6 +92,9 @@ Table of Content
 
 <!-- toc ends -->
 
+# Contributing
+You can contribute to the project by making a [Pull Request](https://github.com/oleksis/real-python-pdf/pulls) 
+or by sending new links to the __Table of Contents__ [Issues](https://github.com/oleksis/real-python-pdf/issues). Any feedbacks is welcome!
 
-# LICENSE
+# License
 [MIT](LICENSE)
