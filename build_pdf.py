@@ -222,7 +222,7 @@ def main(url):
     print("Printing to PDF...")
     pdf_file_name = driver.title + ".pdf"
     # Clean some special characters
-    pdf_file_name = pdf_file_name.replace("?", "").replace("*", "")
+    pdf_file_name = pdf_file_name.replace("?", "").replace("*", "").replace(":", "")
     pdf_file_path = os.sep.join([ROOT, "pdfs", pdf_file_name])
     # print_pdf_save_as(driver, path_pdf=pdf_file_path)
     print_pdf(driver, path_pdf=pdf_file_path)

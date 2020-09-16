@@ -49,6 +49,7 @@ python main.py
 * [Python CSV](https://realpython.com/python-csv/)
 * [Python JSON](https://realpython.com/python-json/)
 * [Python Time Module](https://realpython.com/python-time-module/)
+* [Python GUI Tkinter](https://realpython.com/python-gui-tkinter/)
 
 ##	Intermediate
 
@@ -62,7 +63,6 @@ python main.py
 * [Sorting Algorithms Python](https://realpython.com/sorting-algorithms-python/)
 * [Binary Search Python](https://realpython.com/binary-search-python/)
 * [Python Defaultdict](https://realpython.com/python-defaultdict/)
-
 * [Python Debugging Pdb](https://realpython.com/python-debugging-pdb/)
 * [Python Testing](https://realpython.com/python-testing/)
 * [Pytest Python Testing](https://realpython.com/pytest-python-testing/)
@@ -70,6 +70,10 @@ python main.py
 * [Python Type Checking](https://realpython.com/python-type-checking/)
 * [Pyinstaller Python](https://realpython.com/pyinstaller-python/)
 * [Python Logging Source Code](https://realpython.com/python-logging-source-code/)
+* [Python GUI With WxPython](https://realpython.com/python-gui-with-wxpython/)
+* [Python PyQt GUI Calculator](https://realpython.com/python-pyqt-gui-calculator/)
+* [PySimpleGUI Python](https://realpython.com/pysimplegui-python/)
+* [Mobile App Kivy Python](https://realpython.com/mobile-app-kivy-python/)
 
 ##	Advanced
 
@@ -79,7 +83,6 @@ python main.py
 * [Python Async Features](https://realpython.com/python-async-features/)
 * [Async IO Python](https://realpython.com/async-io-python/)
 * [Python Web Scraping Practical Introduction](https://realpython.com/python-web-scraping-practical-introduction/)
-
 * [Creating Modifying PDF](https://realpython.com/creating-modifying-pdf/)
 * [Python Memory Management](https://realpython.com/python-memory-management/)
 * [The Model View Controller MVC Paradigm Summarized With Legos](https://realpython.com/the-model-view-controller-mvc-paradigm-summarized-with-legos/)

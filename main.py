@@ -28,14 +28,17 @@ def get_chunk(marker, content):
 
 
 def get_links(content):
-    "Get List Markdown links from content"
+    "Get List[Dict] Markdown links from content"
     name_regex = "[^]]+"
     url_regex = "https[s]?://[^\)]+"
     link_regex = '\[(?P<text>{0})\]\(\s*(?P<url>{1})(?:(?P<title>"\s.+"))?\)'.format(
         name_regex, url_regex
     )
     r = re.compile(link_regex)
-    links = r.findall(content)
+    links = [
+        {"text": link[0], "url": link[1], "title": link[2]}
+        for link in r.findall(content)
+    ]
     return links
 
 
@@ -51,12 +54,12 @@ if __name__ == "__main__":
     links = get_links(toc_content)
 
     for link in links:
-        url = link[1]
+        url = link["url"]
         try:
             pdf_name = main_build_pdf(url)
             pdf_merger.append(
                 os.sep.join([pdf_dir, pdf_name]),
-                bookmark=link[0],
+                bookmark=link["text"],
                 import_bookmarks=False,
             )
         except Exception as err:
@@ -65,8 +68,10 @@ if __name__ == "__main__":
             continue
         time.sleep(1)
 
-    with open(file=os.sep.join([ROOT, "Real_Python.pdf"]), mode="wb") as output_file:
+    pdf_out = "Real_Python.pdf"
+
+    with open(file=os.sep.join([ROOT, pdf_out]), mode="wb") as output_file:
         pdf_merger.write(output_file)
 
     pdf_merger.close()
-    print("Done. 📖Enjoy Real Python.pdf🤓")
+    print("Done. 📖 Enjoy %s 🤓" % pdf_out)
