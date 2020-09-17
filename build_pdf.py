@@ -101,8 +101,8 @@ def handle_save_as(browser, path_pdf):
         [os.sep.join([ROOT, "handle_save_as.exe"]), browser, path_pdf]
     )
     # Wait for write the path_pdf file name in the dialog
-    time.sleep(30)
-    return ps.returncode
+    return_code = ps.wait()
+    return return_code
 
 
 def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file.pdf"):
