@@ -14,4 +14,5 @@ pdfs/*.pdf
 Real_Python.pdf
 .coverage
 .coveragerc
+htmlcov
 test.md

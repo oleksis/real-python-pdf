@@ -26,5 +26,4 @@ jobs:
         python -m pip install -r requirements.txt
     - name: Test
       run: |-
-        python -m unittest tests.test_main.MainTest
-        python -m unittest tests.test_build_pdf.BuildPdfTest
+        python tests/BuildPdfTestSuite.py

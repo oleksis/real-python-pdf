@@ -42,7 +42,7 @@ def get_links(content):
     return links
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     pdf_list = []
     pdf_merger = PdfFileMerger()
     pdf_dir = os.sep.join([ROOT, "pdfs"])

@@ -44,7 +44,7 @@ options.add_experimental_option(
 # options.binary_location = chrome_exe
 
 
-def reader_mode(url):
+def reader_mode(url):  # pragma: no cover
     """ 
     Return URL in ReaderMode for apply distiller.js
     Chrome ReaderMode ( Distiller - View Reader )
@@ -89,7 +89,7 @@ def delete_element(driver: webdriver.Chrome, name, by=By.CSS_SELECTOR):
     return True
 
 
-def handle_save_as(browser, path_pdf):
+def handle_save_as(browser, path_pdf):  # pragma: no cover
     """
     Handle Save as dialog in Windows for Chrome passing the pdf filename
     and the special ENTER key (escaping special character)
@@ -105,7 +105,7 @@ def handle_save_as(browser, path_pdf):
     return return_code
 
 
-def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file.pdf"):
+def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file.pdf"):  # pragma: no cover
     """
     Print and save the Web page HTML as PDF file in Chrome.
     Use handle_save_as for handle the Save as dialog window.
@@ -185,7 +185,7 @@ def print_pdf(driver: webdriver.Chrome, path_pdf="file.pdf"):
         _file.write(base64.b64decode(pdf_cdp["data"]))
 
 
-def main(url):
+def main(url):  # pragma: no cover
     "Get URL with Chrome webdriver and save PDF to pdfs folder"
     # HTML Remote or Local
     assert "http" in url[:4] or "file" in url[:4]
@@ -233,7 +233,7 @@ def main(url):
     return pdf_file_name
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     url = ""
     if len(sys.argv) == 2:
         url = sys.argv[1]
