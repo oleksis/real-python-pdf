@@ -45,7 +45,7 @@ def get_links(content):
 if __name__ == "__main__":  # pragma: no cover
     pdf_list = []
     pdf_merger = PdfFileMerger()
-    pdf_dir = os.sep.join([ROOT, "pdfs"])
+    pdf_dir = os.path.join(ROOT, "pdfs")
 
     with open("README.md", "r") as _file:
         content = _file.read()
@@ -58,7 +58,7 @@ if __name__ == "__main__":  # pragma: no cover
         try:
             pdf_name = main_build_pdf(url)
             pdf_merger.append(
-                os.sep.join([pdf_dir, pdf_name]),
+                os.path.join(pdf_dir, pdf_name),
                 bookmark=link["text"],
                 import_bookmarks=False,
             )
@@ -70,7 +70,7 @@ if __name__ == "__main__":  # pragma: no cover
 
     pdf_out = "Real_Python.pdf"
 
-    with open(file=os.sep.join([ROOT, pdf_out]), mode="wb") as output_file:
+    with open(file=os.path.join(ROOT, pdf_out), mode="wb") as output_file:
         pdf_merger.write(output_file)
 
     pdf_merger.close()

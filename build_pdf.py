@@ -97,15 +97,15 @@ def handle_save_as(browser, path_pdf):  # pragma: no cover
     """
     # Escape de Path to file 👀
     path_pdf = "%s" % (path_pdf + "{ENTER}")
-    ps = subprocess.Popen(
-        [os.sep.join([ROOT, "handle_save_as.exe"]), browser, path_pdf]
-    )
+    ps = subprocess.Popen([os.path.join(ROOT, "handle_save_as.exe"), browser, path_pdf])
     # Wait for write the path_pdf file name in the dialog
     return_code = ps.wait()
     return return_code
 
 
-def print_pdf_save_as(driver: webdriver.Chrome, browser="chrome", path_pdf="file.pdf"):  # pragma: no cover
+def print_pdf_save_as(
+    driver: webdriver.Chrome, browser="chrome", path_pdf="file.pdf"
+):  # pragma: no cover
     """
     Print and save the Web page HTML as PDF file in Chrome.
     Use handle_save_as for handle the Save as dialog window.
@@ -223,7 +223,7 @@ def main(url):  # pragma: no cover
     pdf_file_name = driver.title + ".pdf"
     # Clean some special characters
     pdf_file_name = pdf_file_name.replace("?", "").replace("*", "").replace(":", "")
-    pdf_file_path = os.sep.join([ROOT, "pdfs", pdf_file_name])
+    pdf_file_path = os.path.join(ROOT, "pdfs", pdf_file_name)
     # print_pdf_save_as(driver, path_pdf=pdf_file_path)
     print_pdf(driver, path_pdf=pdf_file_path)
     print("All done!")

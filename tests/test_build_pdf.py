@@ -24,7 +24,7 @@ class BuildPdfTest(unittest.TestCase):
             "A Practical Introduction to Web Scraping"
             " in Python " + chr(8211) + " Real Python.html"
         )
-        file_html = os.sep.join([ROOT_PATH, "tests", file_name])
+        file_html = os.path.join(ROOT_PATH, "tests", file_name)
         file_html = file_html.replace("\\", "/")
         file_url = "/".join([file_schema, file_html])
 
@@ -36,7 +36,7 @@ class BuildPdfTest(unittest.TestCase):
         try:
             cls.nav_element = cls.driver.find_element(By.CSS_SELECTOR, "nav.navbar")
             pdf_file_name = cls.driver.title + ".pdf"
-            cls.pdf_file_path = os.sep.join([ROOT, "pdfs", pdf_file_name])
+            cls.pdf_file_path = os.path.join(ROOT, "pdfs", pdf_file_name)
 
             if os.path.isfile(cls.pdf_file_path):
                 os.remove(cls.pdf_file_path)
